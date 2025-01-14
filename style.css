@@ -1,12 +1,12 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Times New Roman', Times, serif, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
 }
 header {
-    background: #333;
-    color: #fff;
+    background: #032da1;
+    color: #ffffff;
     text-align: center;
     padding: 1rem;
 }
@@ -22,7 +22,7 @@ nav ul li {
     margin: 0 15px;
 }
 nav ul li a {
-    color: white;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     padding: 0.5rem 1rem;
     display: inline-block;
