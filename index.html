@@ -1,53 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1>!WEBSITE IS STILL IN PROGRESS!</h1>
-        <h2>Abboud Nader</h2>
-        <p>Computer Science student at University of North Florida</p>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    <section id="about">
-        <h2>About Me</h2>
-        <p>[write bio here]</p>
-    </section>
-    <section id="projects">
-        <h2>Projects</h2>
-        <p>[projects' details here]</p>
-    </section>
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>Java</li>
-            <li>C</li>
-            <li>Python</li>
-            <li>Adobe Programs</li>
 
-        </ul>
-    </section>
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Feel free to reach out!</p>
-        <ul>
-            <li><a href="https://github.com/Abboud0">GitHub</a></li>
-            <li><a href="mailto:abboudnader0@gmail.com">Email</a></li>
-        </ul>
-    </section>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- JavaScript code for the skills slider -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+
+<body>
+    <div class="slider">
+        <p>Hello there, do not forget to follow my Instagram! @abboud_nader 😁</p>
+    </div>
+    <header class="hero-header">
+        <div class="header-content">
+            <h1>Abboud Nader</h1>
+            <p>Computer Science student at University of North Florida</p>
+        </div>
+        <div class="header-image">
+            <img src="background/me1.svg" alt="Abboud Nader" </div>
+    </header>
 </body>
+<nav>
+    <ul>
+        <li><a href="#about" class="nav-button">About</a></li>
+        <li><a href="#projects" class="nav-button">Projects</a></li>
+        <li><a href="#skills-slider" class="nav-button">Skills</a></li>
+        <li><a href="#contact" class="nav-button">Contact</a></li>
+    </ul>
+</nav>
+<section id="about">
+    <h2>About Me</h2>
+    <p>[write bio here]</p>
+</section>
+<section id="projects">
+    <h2>Projects</h2>
+    <p>[projects' details here]</p>
+</section>
+<section id="skills-slider">
+    <h2>My Skills</h2>
+    <div class="carousel">
+        <div class="carousel__item">
+            <h3>HTML</h3>
+            <img src="background/html.jpg" alt="html">
+            <p>building the structure of websites</p>
+        </div>
+        <div class="carousel__item">
+            <h3>CSS</h3>
+            <img src="background/css.jpg" alt="css">
+            <p>Styling and designing websites</p>
+        </div>
+        <div class="carousel__item">
+            <h3>JavaScript</h3>
+            <img src="background/javascript.jpg" alt="javascript">
+            <p>making websites interactive and dynamic</p>
+        </div>
+        <div class="carousel__item">
+            <h3>Python</h3>
+            <img src="background/python.jpg" alt="python">
+            <p>the most powerful language for backend and AI</p>
+        </div>
+        <div class="carousel__item">
+            <h3>Java</h3>
+            <img src="background/java.jpg" alt="java">
+            <p>Object-oriented programming for applications</p>
+        </div>
+        <div class="carousel__item">
+            <h3>C</h3>
+            <img src="background/C.jpg" alt="C">
+            <p>general purpose programming language</p>
+        </div>
+        <div class="carousel__item">
+            <h3>Adobe</h3>
+            <img src="background/adobe.jpg" alt="adobe">
+            <p>marketing, advertising, art, design, publishing, and computer systems design</p>
+        </div>
+    </div>
+    <button class="prev">Previous</button>
+    <button class="next">Next</button>
+</section>
+
+
+<section id="contact">
+    <h2>Contact</h2>
+    <p>Feel free to reach out!</p>
+    <ul class="contact-list">
+        <li>
+            <a href="https://www.linkedin.com/in/abboud-nader/" class="contact-btn" target="_blank">
+                <img src="background/linkedinsvg.svg" alt="LinkedIn">
+                LinkedIn
+            </a>
+        </li>
+        <li>
+            <a href="mailto:abboudnader0@gmail.com" class="contact-btn">
+                <img src="background/gmailsvg.svg" alt="Gmail">
+                Email
+            </a>
+        </li>
+        <li>
+            <a href="tel:+19044309338" class="contact-btn">
+                <img src="background/phone.svg" alt="Phone">
+                Phone
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/Abboud0" class="contact-btn" target="_blank">
+                <img src="background/github.svg" alt="GitHub">
+                GitHub
+            </a>
+        </li>
+    </ul>
+</section>
+
+
+<script src="script.js"></script>
+
+<div id="popup" class="popup-overlay">
+    <div class="popup-content">
+        <h2>Website is still in progress!</h2>
+        <p>Stay tuned for updates.</p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+</div>
+
+<script>
+    window.onload = function () {
+        document.getElementById('popup').classList.add('active');
+    };
+
+    function closePopup() {
+        document.getElementById('popup').classList.remove('active');
+    }
+</script>
+</body>
+
 </html>
