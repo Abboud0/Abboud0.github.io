@@ -2,198 +2,642 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
-        rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="style.css">
-
-    <!-- JavaScript code for the skills slider -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 
 <body>
-    <div class="slider">
-        <p>Hello there, do not forget to follow my Instagram! @abboud_nader 😁</p>
+  <!-- background -->
+  <div class="bg-gradient" aria-hidden="true"></div>
+  <canvas id="bg-stars" aria-hidden="true"></canvas>
+
+  <!-- top slider -->
+  <div class="slider">
+    <p>Hello there, do not forget to follow my Instagram! @abboud_nader 😁</p>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" id="home" aria-label="Intro">
+    <div class="hero__inner">
+      <div class="hero__badge" aria-hidden="true">👋 hey, I'm</div>
+      <h1 class="hero__title"><span class="hero__name">Abboud Nader</span></h1>
+      <p class="hero__tagline">Computer Science @ UNF • Developer • Problem Solver</p>
+
+      <p class="hero__rotating" aria-live="polite">
+        <span class="rotating-item">Systems & Low-Level (C/Java)</span>
+        <span class="rotating-item">Web Apps (JS/React)</span>
+        <span class="rotating-item">Data & Scripting (Python)</span>
+        <span class="rotating-item">AI/ML Curious</span>
+      </p>
+
+      <div class="hero__ctas">
+        <a href="#projects" class="btn btn--primary">View Projects</a>
+        <a href="assets/AbboudNaderResume.pdf" class="btn btn--ghost" target="_blank" rel="noopener">Download
+          Resume</a>
+      </div>
+
+      <!-- social pills -->
+      <div class="hero__social hero__social--buttons" aria-label="Social links">
+        <a href="https://www.linkedin.com/in/abboud-nader/" class="contact-btn contact-btn--hero" target="_blank"
+          rel="noopener">
+          <img src="background/linkedinsvg.svg" alt="LinkedIn"> LinkedIn
+        </a>
+        <a href="mailto:abboudnader0@gmail.com" class="contact-btn contact-btn--hero">
+          <img src="background/gmailsvg.svg" alt="Email"> Email
+        </a>
+        <a href="https://github.com/Abboud0" class="contact-btn contact-btn--hero" target="_blank" rel="noopener">
+          <img src="background/github.svg" alt="GitHub"> GitHub
+        </a>
+      </div>
     </div>
-    <header class="hero-header">
-        <div class="header-content">
-            <h1>Abboud Nader</h1>
-            <p>Computer Science student at University of North Florida</p>
-        </div>
-        <div class="header-image">
-            <img src="background/me1.svg" alt="Abboud Nader">
-        </div>
-    </header>
-</body>
-<nav>
+
+    <button class="hero__scroll" aria-label="Scroll to About">
+      <span class="hero__scroll-dot"></span>
+    </button>
+  </header>
+
+  <!-- mobile menu icon -->
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+  <!-- NAV -->
+  <nav>
     <ul>
-        <li><a href="#about" class="nav-button">About</a></li>
-        <li><a href="#education" class="nav-button">Education</a></li>
-        <li><a href="#projects" class="nav-button">Projects</a></li>
-        <li><a href="#skills-slider" class="nav-button">Skills</a></li>
-        <li><a href="#contact" class="nav-button">Contact</a></li>
+      <li><a href="#about" class="nav-button">About</a></li>
+      <li><a href="#education" class="nav-button">Education</a></li>
+      <li><a href="#projects" class="nav-button">Projects</a></li>
+      <li><a href="#skills" class="nav-button">Skills</a></li>
+      <li><a href="#contact" class="nav-button">Contact</a></li>
     </ul>
-</nav>
-<section id="about">
-    <h2>About Me</h2>
-    <p>[write bio here]</p>
-</section>
-<section id="education">
-    <h2>Education</h2>
+  </nav>
 
-    <div class="timeline">
-        <div class="timeline-item">
-            <img src="background/unf-logo.png" alt="UNF Logo" class="unf-logo">
-            <div class="timeline-date">2022 - present</div>
-            <div class="timeline-content">
-                <h3>University of North Florida</h3>
-                <p><strong>Bachelor's in Computer Science</strong></p>
-                <p>Relevant courses:</p>
-
-                <div class="course-container">
-                    <div class="course-card">
-                        <div class="course-front">
-                            <h3>Operating Systems</h3>
-                        </div>
-                        <div class="course-back">
-                            <p>write info about course</p>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-front">
-                            <h3>Data Structures</h3>
-                        </div>
-                        <div class="course-back">
-                            <p>write info about course</p>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-front">
-                            <h3>Intro to AI</h3>
-                        </div>
-                        <div class="course-back">
-                            <p>write info about course</p>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-front">
-                            <h3>Software Engineering</h3>
-                        </div>
-                        <div class="course-back">
-                            <p>write info about course</p>
-                        </div>
-                    </div>
-                </div> <!-- End of course-container -->
-            </div> <!-- End of timeline-content -->
-        </div> <!-- End of timeline-item -->
-    </div> <!-- End of timeline -->
-</section>
-<section id="projects">
-    <h2>Projects</h2>
-    <p>[projects' details here]</p>
-</section>
-<section id="skills-slider">
-    <h2>My Skills</h2>
-    <div class="carousel">
-        <div class="carousel__item">
-            <h3>HTML</h3>
-            <img src="background/html.jpg" alt="html">
-            <p>building the structure of websites</p>
-        </div>
-        <div class="carousel__item">
-            <h3>CSS</h3>
-            <img src="background/css.jpg" alt="css">
-            <p>Styling and designing websites</p>
-        </div>
-        <div class="carousel__item">
-            <h3>JavaScript</h3>
-            <img src="background/javascript.jpg" alt="javascript">
-            <p>making websites interactive and dynamic</p>
-        </div>
-        <div class="carousel__item">
-            <h3>Python</h3>
-            <img src="background/python.jpg" alt="python">
-            <p>the most powerful language for backend and AI</p>
-        </div>
-        <div class="carousel__item">
-            <h3>Java</h3>
-            <img src="background/java.jpg" alt="java">
-            <p>Object-oriented programming for applications</p>
-        </div>
-        <div class="carousel__item">
-            <h3>C</h3>
-            <img src="background/C.jpg" alt="C">
-            <p>general purpose programming language</p>
-        </div>
-        <div class="carousel__item">
-            <h3>Adobe</h3>
-            <img src="background/adobe.jpg" alt="adobe">
-            <p>marketing, advertising, art, design, publishing, and computer systems design</p>
-        </div>
+  <!-- ===== About (ADDED) ===== -->
+  <section id="about" class="about">
+    <div class="about__card reveal" data-reveal="up">
+      <h2>About Me</h2>
+      <p class="about__lead">
+        I’m a CS student at the University of North Florida focused on practical, well-engineered software.
+        I enjoy owning projects end-to-end-designing the UX, building the backend, and tightening the details.
+        Lately that’s meant automation/scraping services, a smart weekend planner that combines maps and events,
+        and a desktop AI screen helper. I’m comfortable across the stack (Python, JavaScript/TypeScript, C, Java)
+        and I keep code readable, versioned, and tested.
+      </p>
     </div>
-    <button class="prev">Previous</button>
-    <button class="next">Next</button>
-</section>
+  </section>
+
+  <!-- ===== Education (ADDED) ===== -->
+  <section id="education" class="edu">
+    <div class="edu__card reveal">
+      <div class="edu__header">
+        <img src="background/unf-logo.png" alt="University of North Florida logo" />
+        <div class="edu__meta">
+          <div class="edu__years">2022 – present</div>
+          <h2>University of North Florida</h2>
+          <p class="edu__degree">Bachelor's in Computer Science</p>
+        </div>
+      </div>
+
+      <h3 class="edu__sub">Relevant courses</h3>
+      <div class="edu__courses">
+        <!-- Operating Systems -->
+        <div class="course-card reveal" data-reveal="up">
+          <div class="course-card__inner">
+            <div class="course-front">
+              <h4>Operating Systems</h4>
+            </div>
+            <div class="course-back">
+              <p>Processes, threads, scheduling, memory, files, concurrency.
+                Built schedulers/synchronizers and a tiny shell in C.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Structures -->
+        <div class="course-card reveal" data-reveal="up" style="--d:.08s">
+          <div class="course-card__inner">
+            <div class="course-front">
+              <h4>Data Structures</h4>
+            </div>
+            <div class="course-back">
+              <p>Lists, stacks/queues, hashes, trees/heaps, graphs.
+                Implemented structures + BFS/DFS, Dijkstra, heaps.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Intro to AI -->
+        <div class="course-card reveal" data-reveal="up" style="--d:.16s">
+          <div class="course-card__inner">
+            <div class="course-front">
+              <h4>Intro to AI</h4>
+            </div>
+            <div class="course-back">
+              <p>Search (A*, UCS), heuristics, CSPs, basic ML/classification.
+                Built small agents for planning & decisions.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Software Engineering -->
+        <div class="course-card reveal" data-reveal="up" style="--d:.24s">
+          <div class="course-card__inner">
+            <div class="course-front">
+              <h4>Software Engineering</h4>
+            </div>
+            <div class="course-back">
+              <p>Requirements, version control, testing, agile teamwork.
+                Shipped features with code reviews and CI.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ====== -->
+  <section id="projects" class="projects">
+    <div class="projects__head">
+      <h2>Featured Work</h2>
+      <p class="projects__sub">A mix of systems, web, and AI-curious builds — crafted with performance and polish.</p>
+    </div>
+
+    <div class="projects__grid">
+      <!-- Hidden Day (featured) -->
+      <article class="project reveal" data-reveal="up">
+        <div class="project__link">
+          <div class="project__thumb">
+            <img src="background/hidden-day.png" alt="Hidden Day — Smart Weekend Planner">
+            <span class="project__year">2025</span>
+            <span class="project__shine"></span>
+          </div>
+          <div class="project__overlay">
+            <div class="project__badges">
+              <span class="badge badge--accent">Featured</span>
+              <span class="badge">Next.js</span>
+              <span class="badge">Tailwind</span>
+              <span class="badge">FastAPI</span>
+            </div>
+            <h3 class="project__title">Hidden Day — Smart Weekend Planner</h3>
+            <p class="project__desc">Generates mapped itineraries from your budget, time, and interests.</p>
+            <div class="project__btns">
+              <a class="p-btn p-btn--primary" href="#"
+                onclick="openDemo('https://hidden-day.vercel.app','Hidden Day — Live'); return false;">Live View</a>
+              <a class="p-btn p-btn--ghost" href="https://hidden-day.vercel.app" target="_blank" rel="noopener">Open in
+                new tab</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Marketplace Sniper -->
+      <article class="project reveal" data-reveal="up">
+        <div class="project__link">
+          <div class="project__thumb">
+            <img src="background/running-locally.png" alt="Marketplace Sniper app preview">
+            <span class="project__year">2025</span>
+            <span class="project__shine"></span>
+          </div>
+          <div class="project__overlay">
+            <div class="project__badges">
+              <span class="badge">Flask</span>
+              <span class="badge">SQLite</span>
+              <span class="badge">Discord</span>
+            </div>
+            <h3 class="project__title">Marketplace Sniper</h3>
+            <p class="project__desc">Snipe online deals and listings before everyone else!</p>
+            <div class="project__btns">
+              <button class="p-btn p-btn--disabled" disabled>🔧 Private demo</button>
+              <a class="p-btn p-btn--ghost" href="#" target="_blank" rel="noopener">💻 Code (soon)</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Smart Password Generator -->
+      <article class="project reveal" data-reveal="up">
+        <div class="project__link">
+          <div class="project__thumb">
+            <img src="background/running-locally.png" alt="Password generator preview">
+            <span class="project__year">2024</span>
+            <span class="project__shine"></span>
+          </div>
+          <div class="project__overlay">
+            <div class="project__badges">
+              <span class="badge">HTML</span>
+              <span class="badge">CSS</span>
+              <span class="badge">JS</span>
+            </div>
+            <h3 class="project__title">Smart Password Generator</h3>
+            <p class="project__desc">Keyword infusion + realistic entropy mix, desktop-friendly UI.</p>
+            <div class="project__btns">
+              <button class="p-btn p-btn--disabled" disabled>🔧 Private demo</button>
+              <a class="p-btn p-btn--ghost" href="#" target="_blank" rel="noopener">💻 Code (soon)</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Science Fact of the Day -->
+      <article class="project reveal" data-reveal="up">
+        <div class="project__link">
+          <div class="project__thumb">
+            <img src="background/running-locally.png" alt="Science Fact of the Day preview">
+            <span class="project__year">2024</span>
+            <span class="project__shine"></span>
+          </div>
+          <div class="project__overlay">
+            <div class="project__badges">
+              <span class="badge">JS</span>
+              <span class="badge">React</span>
+              <span class="badge">IndexedDB</span>
+            </div>
+            <h3 class="project__title">Science Fact of the Day</h3>
+            <p class="project__desc">Daily fact engine with categories, animations, and offline cache.</p>
+            <div class="project__btns">
+              <button class="p-btn p-btn--disabled" disabled>🔧 Private demo</button>
+              <a class="p-btn p-btn--ghost" href="#" target="_blank" rel="noopener">💻 Code (soon)</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Warehouse AI Robots -->
+      <article class="project reveal" data-reveal="up">
+        <div class="project__link">
+          <div class="project__thumb">
+            <img src="background/running-locally.png" alt="Warehouse AI Robots preview">
+            <span class="project__year">2024</span>
+            <span class="project__shine"></span>
+          </div>
+          <div class="project__overlay">
+            <div class="project__badges">
+              <span class="badge">Python</span>
+              <span class="badge">Path Planning</span>
+              <span class="badge">Simulation</span>
+            </div>
+            <h3 class="project__title">Warehouse AI Robots</h3>
+            <p class="project__desc">Coordinated bots that plan, pick, and deliver warehouse tasks efficiently.</p>
+            <div class="project__btns">
+              <button class="p-btn p-btn--disabled" disabled>🔧 Private demo</button>
+              <a class="p-btn p-btn--ghost" href="#" target="_blank" rel="noopener">💻 Code (soon)</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Smart Attendance Tracker -->
+      <article class="project reveal" data-reveal="up">
+        <div class="project__link">
+          <div class="project__thumb">
+            <img src="background/running-locally.png" alt="Smart Attendance Tracker preview">
+            <span class="project__year">2024</span>
+            <span class="project__shine"></span>
+          </div>
+          <div class="project__overlay">
+            <div class="project__badges">
+              <span class="badge">Python</span>
+              <span class="badge">Raspberry Pi</span>
+              <span class="badge">OpenCV</span>
+            </div>
+            <h3 class="project__title">Smart Attendance Tracker</h3>
+            <p class="project__desc">Face-based check-ins — look at the camera for 1s to mark attendance.</p>
+            <div class="project__btns">
+              <button class="p-btn p-btn--disabled" disabled>🔧 Private demo</button>
+              <a class="p-btn p-btn--ghost" href="#" target="_blank" rel="noopener">💻 Code (soon)</a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
 
 
-<section id="contact">
+  <!-- SKILLS -->
+  <section id="skills" class="skills">
+    <div class="skills__head">
+      <h2>Skills</h2>
+      <p class="skills__sub">Hover nodes to explore connections. Filter by category.</p>
+      <div class="skills__filters" role="tablist" aria-label="Skill filters">
+        <button class="sfilter is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="sfilter" data-filter="lang" role="tab">Languages</button>
+        <button class="sfilter" data-filter="web" role="tab">Web</button>
+        <button class="sfilter" data-filter="systems" role="tab">Systems</button>
+        <button class="sfilter" data-filter="tools" role="tab">Tools</button>
+      </div>
+    </div>
+
+    <div class="skills__graph">
+      <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet" aria-labelledby="skillsTitle">
+        <title id="skillsTitle">Interactive skills map</title>
+
+        <!-- ===== gradient for rings ===== -->
+        <defs>
+          <linearGradient id="grad-skill" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#7f53ff" />
+            <stop offset="100%" stop-color="#00c2ff" />
+          </linearGradient>
+        </defs>
+
+        <!-- ===== Edges (with data-from/to for robust hover) ===== -->
+        <g class="edges">
+          <!-- web cluster -->
+          <line class="edge web" data-from="core" data-to="js" x1="500" y1="300" x2="740" y2="200" />
+          <line class="edge web" data-from="js" data-to="react" x1="740" y1="200" x2="880" y2="220" />
+          <line class="edge web" data-from="js" data-to="htmlcss" x1="740" y1="200" x2="750" y2="80" />
+
+          <!-- python/tools side -->
+          <line class="edge web" data-from="core" data-to="python" x1="500" y1="300" x2="680" y2="340" />
+          <line class="edge tools" data-from="python" data-to="flask" x1="680" y1="340" x2="840" y2="360" />
+
+          <!-- systems / languages left-top -->
+          <line class="edge systems" data-from="core" data-to="c" x1="500" y1="300" x2="320" y2="190" />
+          <line class="edge systems" data-from="c" data-to="java" x1="320" y1="190" x2="160" y2="150" />
+          <line class="edge systems" data-from="c" data-to="osnet" x1="320" y1="190" x2="300" y2="70" />
+
+          <!-- CS fundamentals (mapped to systems) -->
+          <line class="edge systems" data-from="core" data-to="ds" x1="500" y1="300" x2="340" y2="380" />
+          <line class="edge systems" data-from="ds" data-to="algos" x1="340" y1="380" x2="210" y2="470" />
+
+          <!-- tools bottom -->
+          <line class="edge tools" data-from="core" data-to="git" x1="500" y1="300" x2="520" y2="510" />
+          <line class="edge systems" data-from="git" data-to="linux" x1="520" y1="510" x2="800" y2="520" />
+        </g>
+
+        <!-- ===== Core ===== -->
+        <g class="node core" id="core" data-cat="core" data-name="Core">
+          <circle class="halo" cx="500" cy="300" r="78"></circle>
+          <circle class="ring" cx="500" cy="300" r="62"></circle>
+          <circle class="dot" cx="500" cy="300" r="34"></circle>
+          <text class="label" x="500" y="300" dominant-baseline="middle" text-anchor="middle">Core</text>
+        </g>
+
+        <!-- ===== Web ===== -->
+        <g class="node" id="js" data-cat="web,lang">
+          <g transform="translate(740 200)" data-label-dx="-150" data-label-dy="20" data-leader="0">
+            <circle class="ring" r="44" data-level="82"></circle>
+            <circle class="dot" r="26"></circle>
+            <text class="label" y="5">JavaScript</text>
+          </g>
+        </g>
+
+        <g class="node" id="react" data-cat="web">
+          <g transform="translate(880 220)" data-label-dx="30" data-label-dy="10" data-leader="0">
+            <circle class="ring" r="38" data-level="78"></circle>
+            <circle class="dot" r="22"></circle>
+            <text class="label" y="5">React</text>
+          </g>
+        </g>
+
+        <g class="node" id="htmlcss" data-cat="web">
+          <g transform="translate(750 80)" data-label-dx="-35" data-label-dy="-30" data-leader="0">
+            <circle class="ring" r="34" data-level="85"></circle>
+            <circle class="dot" r="20"></circle>
+            <text class="label" y="5">HTML/CSS</text>
+          </g>
+        </g>
+
+        <!-- ===== Python / Tools ===== -->
+        <g class="node" id="python" data-cat="lang">
+          <g transform="translate(680 340)" data-label-dx="0" data-label-dy="60">
+            <circle class="ring" r="42" data-level="88"></circle>
+            <circle class="dot" r="24"></circle>
+            <text class="label" y="5">Python</text>
+          </g>
+        </g>
+
+        <g class="node" id="flask" data-cat="tools,web">
+          <g transform="translate(840 360)" data-label-dx="50" data-label-dy="0">
+            <circle class="ring" r="34" data-level="70"></circle>
+            <circle class="dot" r="20"></circle>
+            <text class="label" y="5">Flask / SQLite</text>
+          </g>
+        </g>
+
+        <!-- ===== Systems / Languages (left) ===== -->
+        <g class="node" id="c" data-cat="lang,systems">
+          <g transform="translate(320 190)" data-label-dx="-5" data-label-dy="70">
+            <circle class="ring" r="40" data-level="75"></circle>
+            <circle class="dot" r="22"></circle>
+            <text class="label">C</text>
+          </g>
+        </g>
+
+        <g class="node" id="java" data-cat="lang">
+          <g transform="translate(160 150)">
+            <circle class="ring" r="38" data-level="72"></circle>
+            <circle class="dot" r="22"></circle>
+            <text class="label" y="5">Java</text>
+          </g>
+        </g>
+
+        <g class="node" id="osnet" data-cat="systems">
+          <g transform="translate(300 70)" data-label-dx="30" data-label-dy="-20" data-leader="0">
+            <circle class="ring" r="30" data-level="68"></circle>
+            <circle class="dot" r="18"></circle>
+            <text class="label" y="5">OS / Networking</text>
+          </g>
+        </g>
+
+        <!-- ===== CS Fundamentals (as systems) ===== -->
+        <g class="node" id="ds" data-cat="systems">
+          <g transform="translate(340 380)" data-label-dx="-60" data-label-dy="0" data-leader="0">
+            <circle class="ring" r="34" data-level="80"></circle>
+            <circle class="dot" r="20"></circle>
+            <text class="label" y="5">Data Structures</text>
+          </g>
+        </g>
+
+        <g class="node" id="algos" data-cat="systems">
+          <g transform="translate(210 470)" data-label-dx="-45" data-label-dy="10" data-leader="0">
+            <circle class="ring" r="30" data-level="72"></circle>
+            <circle class="dot" r="18"></circle>
+            <text class="label" y="5">Algorithms</text>
+          </g>
+        </g>
+
+        <!-- ===== Tools bottom ===== -->
+        <g class="node" id="git" data-cat="tools">
+          <g transform="translate(520 510)" data-label-dx="0" data-label-dy="35" data-leader="0">
+            <circle class="ring" r="34" data-level="78"></circle>
+            <circle class="dot" r="20"></circle>
+            <text class="label" y="5">Git / GitHub</text>
+          </g>
+        </g>
+
+        <g class="node" id="linux" data-cat="systems">
+          <g transform="translate(800 520)" data-label-dx="60" data-label-dy="-10">
+            <circle class="ring" r="28" data-level="70"></circle>
+            <circle class="dot" r="16"></circle>
+            <text class="label" y="5">Linux / Bash</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <p class="skills__hint">Tip: use filters to highlight clusters. Levels are shown by the ring</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
     <h2>Contact</h2>
     <p>Feel free to reach out!</p>
     <ul class="contact-list">
-        <li>
-            <a href="https://www.linkedin.com/in/abboud-nader/" class="contact-btn" target="_blank">
-                <img src="background/linkedinsvg.svg" alt="LinkedIn">
-                LinkedIn
-            </a>
-        </li>
-        <li>
-            <a href="mailto:abboudnader0@gmail.com" class="contact-btn">
-                <img src="background/gmailsvg.svg" alt="Gmail">
-                Email
-            </a>
-        </li>
-        <li>
-            <a href="tel:+19044309338" class="contact-btn">
-                <img src="background/phone.svg" alt="Phone">
-                Phone
-            </a>
-        </li>
-        <li>
-            <a href="https://github.com/Abboud0" class="contact-btn" target="_blank">
-                <img src="background/github.svg" alt="GitHub">
-                GitHub
-            </a>
-        </li>
+      <li><a href="https://www.linkedin.com/in/abboud-nader/" class="contact-btn" target="_blank"><img
+            src="background/linkedinsvg.svg" alt="LinkedIn">LinkedIn</a></li>
+      <li><a href="mailto:abboudnader0@gmail.com" class="contact-btn"><img src="background/gmailsvg.svg"
+            alt="Gmail">Email</a></li>
+      <li><a href="tel:+19044309338" class="contact-btn"><img src="background/phone.svg" alt="Phone">Phone</a></li>
+      <li><a href="https://github.com/Abboud0" class="contact-btn" target="_blank"><img src="background/github.svg"
+            alt="GitHub">GitHub</a></li>
     </ul>
-</section>
+  </section>
 
-<script src="Script.js"></script>
+  <img src="background/fishing-thing.svg" alt="Abboud avatar" id="peeking-avatar" />
 
-<div id="popup" class="popup-overlay">
+  <!-- popup -->
+  <div id="popup" class="popup-overlay">
     <div class="popup-content">
-        <h2>Website is still in progress!</h2>
-        <h3>Stay tuned for updates.</h3>
-        <p>Last updated: 30th of January 2025 </p>
-        <button onclick="closePopup()">OK</button>
+      <h2>Website is still in progress!</h2>
+      <h3>Stay tuned for more updates.</h3>
+      <p>Last updated: 15th of October 2025</p>
+      <button onclick="closePopup()">OK</button>
     </div>
-</div>
+  </div>
 
-<script>
+  <!-- Avatar note -->
+  <div class="avatar-note" role="status" aria-live="polite">
+    <span class="sparkle" aria-hidden="true"></span>
+    Interactive avatar — coming soon
+  </div>
+
+  <script>
     window.onload = function () {
-        document.getElementById('popup').classList.add('active');
+      document.getElementById('popup').classList.add('active');
+    };
+    function closePopup() { document.getElementById('popup').classList.remove('active'); }
+  </script>
+
+  <!-- Live Demo Modal -->
+  <div id="demoOverlay" class="demo-overlay" aria-hidden="true">
+    <div class="demo-modal" role="dialog" aria-modal="true" aria-labelledby="demoTitle">
+      <header class="demo-header">
+        <strong id="demoTitle">Live Demo</strong>
+        <div class="demo-actions">
+          <a id="demoOpenNew" class="p-btn" href="#" target="_blank" rel="noopener">Open in new tab</a>
+          <button type="button" id="demoClose" class="p-btn p-btn--primary">Close</button>
+        </div>
+      </header>
+
+      <div class="demo-frame-wrap">
+        <div id="demoSpinner" class="demo-spinner" aria-hidden="true">Loading…</div>
+        <iframe id="demoFrame" title="Live demo" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+          referrerpolicy="no-referrer" allow="clipboard-write" src="" loading="eager"></iframe>
+        <div id="demoBlocked" class="demo-blocked" hidden>
+          <p>This site can’t be embedded (it blocks iframes). Click <strong>Open in new tab</strong> instead.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.openDemo = function (url, title) {
+      const overlay = document.getElementById('demoOverlay');
+      const frame = document.getElementById('demoFrame');
+      const titleEl = document.getElementById('demoTitle');
+      const openNew = document.getElementById('demoOpenNew');
+      const spinner = document.getElementById('demoSpinner');
+      const blocked = document.getElementById('demoBlocked');
+      if (!overlay || !frame) return;
+
+      titleEl.textContent = title || 'Live Demo';
+      openNew.href = url;
+      spinner.style.display = 'grid';
+      blocked.hidden = true;
+      frame.src = 'about:blank';
+
+      overlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+
+      requestAnimationFrame(() => { frame.src = url; });
+
+      const t = setTimeout(() => {
+        spinner.style.display = 'none';
+        blocked.hidden = false;
+      }, 4000);
+
+      frame.addEventListener('load', function onload() {
+        clearTimeout(t);
+        spinner.style.display = 'none';
+        frame.removeEventListener('load', onload);
+      });
     };
 
-    function closePopup() {
-        document.getElementById('popup').classList.remove('active');
-    }
-</script>
+    window.closeDemo = function () {
+      const overlay = document.getElementById('demoOverlay');
+      const frame = document.getElementById('demoFrame');
+      if (!overlay) return;
+      overlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+      if (frame) frame.src = 'about:blank';
+    };
+
+    document.addEventListener('click', (e) => {
+      const overlay = document.getElementById('demoOverlay');
+      if (overlay && e.target === overlay) window.closeDemo();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') window.closeDemo();
+    });
+
+    (function initAvatarNote() {
+      const avatar = document.getElementById('peeking-avatar');
+      if (!avatar) return;
+
+      // ensure exists
+      let note = document.querySelector('.avatar-note');
+      if (!note) {
+        document.body.insertAdjacentHTML(
+          'beforeend',
+          `<div class="avatar-note pos-above" role="status" aria-live="polite">
+         <span class="sparkle" aria-hidden="true"></span>
+         Interactive avatar — coming soon
+       </div>`
+        );
+        note = document.querySelector('.avatar-note');
+      }
+
+      function place(mode = "above") {
+        const r = avatar.getBoundingClientRect();
+        if (mode === 'right') {
+          note.style.left = (r.left + r.width * 0.62) + 'px';
+          note.style.top = (r.top + r.height * 0.36) + 'px';
+          note.classList.remove('pos-above'); note.classList.add('pos-right');
+        } else {
+          note.style.left = (r.left + r.width * 0.32) + 'px';
+          note.style.top = (r.top + r.height * 0.18) + 'px';
+          note.classList.remove('pos-right'); note.classList.add('pos-above');
+        }
+      }
+
+      // show & position
+      place('above');
+      note.classList.add('is-visible');
+
+      // keep position correct on resize
+      window.addEventListener('resize', () => place('above'), { passive: true });
+    })();
+
+  </script>
+
+  <script src="Script.js" defer></script>
+
 </body>
 
 </html>
