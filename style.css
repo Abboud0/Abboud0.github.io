@@ -1517,35 +1517,32 @@ body::before {
   transform: none;
 }
 
-/* Peeking avatar: left-middle, adaptive size */
+/* place wrapper at left-bottom (safe on iOS too) */
 .peek {
   position: fixed;
-  left: 35;
-  top: 50%;
-  transform: translateY(-3%);
-  width: clamp(78px, 9vw, 120px);   /* small on phones, modest on desktop */
-  height: auto;
+  left: max(0px, env(safe-area-inset-left));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  /* 16px off the bottom */
+  top: auto;
+  transform: none;
+  /* remove translateY(-50%) */
   z-index: 1000;
-  pointer-events: auto;    /* hover works on desktop */
+  pointer-events: auto;
 }
 
 .peek img {
-  display: block;
-  width: 800px;
-  /* desktop default */
+  width: clamp(78px, 9vw, 120px);
   height: auto;
 }
 
-/* Tablet */
 @media (max-width: 900px) {
   .peek img {
-    width: 92px;
+    width: clamp(72px, 10vw, 100px);
   }
 }
 
-/* Phone */
 @media (max-width: 600px) {
   .peek img {
-    width: 78px;
+    width: clamp(68px, 16vw, 92px);
   }
 }

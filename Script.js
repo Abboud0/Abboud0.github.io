@@ -54,37 +54,43 @@ function toggleMenu() {
 
 
 // =====================
-// GSAP peeking avatar (adaptive width)
+// GSAP peeking avatar (adaptive)
 // =====================
 document.addEventListener("DOMContentLoaded", () => {
   const avatar = document.getElementById("peeking-avatar");
   if (!avatar || !window.gsap) return;
 
-  const HANDLE = -80; // pixels visible when hidden
+  // how many pixels of the avatar should remain visible when hidden
+  const visibleHandle = () => {
+    const w = window.innerWidth;
+    if (w <= 600) return 12;   // phone
+    if (w <= 900) return 16;   // tablet
+    return 20;                 // desktop
+  };
 
   const hiddenLeft = () => {
-    const w = avatar.offsetWidth || 120;   // fallback if not yet laid out
-    return -(w - HANDLE);                  // negative so only HANDLE peeks
+    const w = avatar.offsetWidth || 120;
+    return -(w - visibleHandle());  // negative so only the handle peeks
   };
 
   // start hidden-but-peeking
   gsap.set(avatar, { left: hiddenLeft() });
 
-  // intro: slide in, then back
-  gsap.to(avatar, { left: 0, duration: 1, ease: "power2.out", delay: 0.3 });
-  setTimeout(() => gsap.to(avatar, { left: hiddenLeft(), duration: 0.8, ease: "power2.out" }), 4000);
+  // intro: slide in then back
+  gsap.to(avatar, { left: 0, duration: 0.9, ease: "power2.out", delay: 0.25 });
+  setTimeout(() => gsap.to(avatar, { left: hiddenLeft(), duration: 0.7, ease: "power2.out" }), 3500);
 
   // desktop hover
   avatar.addEventListener("mouseenter", () =>
-    gsap.to(avatar, { left: 0, duration: 0.35, ease: "power2.out" })
+    gsap.to(avatar, { left: 0, duration: 0.3, ease: "power2.out" })
   );
   avatar.addEventListener("mouseleave", () =>
-    gsap.to(avatar, { left: hiddenLeft(), duration: 0.6, ease: "power2.out" })
+    gsap.to(avatar, { left: hiddenLeft(), duration: 0.55, ease: "power2.out" })
   );
 
-  // recompute when size changes (so phones/tablets keep a visible handle)
+  // keep the peek size sensible when resized/rotated
   window.addEventListener("resize", () => {
-    const current = parseFloat(getComputedStyle(avatar).left);
+    const current = parseFloat(getComputedStyle(avatar).left) || 0;
     if (current < 0) gsap.set(avatar, { left: hiddenLeft() });
   });
 });
