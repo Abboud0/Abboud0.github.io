@@ -78,7 +78,7 @@
     </ul>
   </nav>
 
-  <!-- ===== About (ADDED) ===== -->
+  <!-- ===== About ===== -->
   <section id="about" class="about">
     <div class="about__card reveal" data-reveal="up">
       <h2>About Me</h2>
@@ -92,11 +92,16 @@
     </div>
   </section>
 
-  <!-- ===== Education (ADDED) ===== -->
+  <!-- ===== Education ===== -->
   <section id="education" class="edu">
     <div class="edu__card reveal">
+
+      <!-- Header -->
       <div class="edu__header">
-        <img src="background/unf-logo.png" alt="University of North Florida logo" />
+        <div class="edu-logo">
+          <img src="background/unf-logo.png" alt="University of North Florida logo">
+        </div>
+
         <div class="edu__meta">
           <div class="edu__years">2022 – present</div>
           <h2>University of North Florida</h2>
@@ -104,7 +109,10 @@
         </div>
       </div>
 
+      <!-- Courses title inside the card -->
       <h3 class="edu__sub">Relevant courses</h3>
+
+      <!-- Courses grid inside the card -->
       <div class="edu__courses">
         <!-- Operating Systems -->
         <div class="course-card reveal" data-reveal="up">
@@ -158,8 +166,10 @@
           </div>
         </div>
       </div>
+
     </div>
   </section>
+
 
   <!-- ============ PROJECTS ====== -->
   <section id="projects" class="projects">
@@ -184,8 +194,8 @@
               <span class="badge">Tailwind</span>
               <span class="badge">FastAPI</span>
             </div>
-            <h3 class="project__title">Hidden Day — Smart Weekend Planner</h3>
-            <p class="project__desc">Generates mapped itineraries from your budget, time, and interests.</p>
+            <h3 class="project__title">Hidden Day</h3>
+            <p class="project__desc">Generates plans from your budget, time, and interests.</p>
             <div class="project__btns">
               <a class="p-btn p-btn--primary" href="#"
                 onclick="openDemo('https://hidden-day.vercel.app','Hidden Day — Live'); return false;">Live View</a>
@@ -220,6 +230,32 @@
         </div>
       </article>
 
+      <!-- AI Screen Helper -->
+      <article class="project reveal" data-reveal="up">
+        <div class="project__link">
+          <div class="project__thumb">
+            <img src="background/running-locally.png" alt="AI Screen Helper desktop app preview">
+            <span class="project__year">2025</span>
+            <span class="project__shine"></span>
+          </div>
+          <div class="project__overlay">
+            <div class="project__badges">
+              <span class="badge">Tauri</span>
+              <span class="badge">TypeScript</span>
+              <span class="badge">OCR</span>
+            </div>
+            <h3 class="project__title">AI Screen Helper</h3>
+            <p class="project__desc">
+              Screenshots, explanations, and quick actions
+            </p>
+            <div class="project__btns">
+              <button class="p-btn p-btn--disabled" disabled>🔧 Private demo</button>
+              <a class="p-btn p-btn--ghost" href="#" target="_blank" rel="noopener">💻 Code (soon)</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
       <!-- Smart Password Generator -->
       <article class="project reveal" data-reveal="up">
         <div class="project__link">
@@ -235,7 +271,7 @@
               <span class="badge">JS</span>
             </div>
             <h3 class="project__title">Smart Password Generator</h3>
-            <p class="project__desc">Keyword infusion + realistic entropy mix, desktop-friendly UI.</p>
+            <p class="project__desc">Keyword infusion + realistic entropy mix, desktop-friendly UI. </p>
             <div class="project__btns">
               <button class="p-btn p-btn--disabled" disabled>🔧 Private demo</button>
               <a class="p-btn p-btn--ghost" href="#" target="_blank" rel="noopener">💻 Code (soon)</a>
@@ -283,7 +319,7 @@
               <span class="badge">Simulation</span>
             </div>
             <h3 class="project__title">Warehouse AI Robots</h3>
-            <p class="project__desc">Coordinated bots that plan, pick, and deliver warehouse tasks efficiently.</p>
+            <p class="project__desc">Bots that plan, pick, and deliver.</p>
             <div class="project__btns">
               <button class="p-btn p-btn--disabled" disabled>🔧 Private demo</button>
               <a class="p-btn p-btn--ghost" href="#" target="_blank" rel="noopener">💻 Code (soon)</a>
@@ -307,7 +343,7 @@
               <span class="badge">OpenCV</span>
             </div>
             <h3 class="project__title">Smart Attendance Tracker</h3>
-            <p class="project__desc">Face-based check-ins — look at the camera for 1s to mark attendance.</p>
+            <p class="project__desc">Look at the camera for 1s to mark attendance.</p>
             <div class="project__btns">
               <button class="p-btn p-btn--disabled" disabled>🔧 Private demo</button>
               <a class="p-btn p-btn--ghost" href="#" target="_blank" rel="noopener">💻 Code (soon)</a>
@@ -315,9 +351,33 @@
           </div>
         </div>
       </article>
+
+      <!-- Security Lab Demos (Bundle) -->
+      <article class="project reveal" data-reveal="up">
+        <div class="project__link">
+          <div class="project__thumb">
+            <img src="background/sec-labs.png" alt="Security lab demos collage">
+            <span class="project__year">2024</span>
+            <span class="project__shine"></span>
+          </div>
+          <div class="project__overlay">
+            <div class="project__badges">
+              <span class="badge">Security</span>
+              <span class="badge">Networking</span>
+              <span class="badge">Linux</span>
+            </div>
+            <h3 class="project__title">Security Lab Demos (Educational)</h3>
+            <p class="project__desc">Lab demos: fix SQLi, move to SSH, set iptables.</p>
+            <div class="project__btns">
+              <a class="p-btn" href="#" target="_blank" rel="noopener">📄 Read write-ups (PDF)</a>
+              <a class="p-btn p-btn--ghost" href="#" target="_blank" rel="noopener">🧪 Artifacts & screenshots</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
     </div>
   </section>
-
 
   <!-- SKILLS -->
   <section id="skills" class="skills">
