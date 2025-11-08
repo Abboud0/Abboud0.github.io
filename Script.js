@@ -57,19 +57,18 @@ function toggleMenu() {
 // positions the note bubble right next to the avatar.
 document.addEventListener("DOMContentLoaded", () => {
   const avatar = document.getElementById("peeking-avatar");
-  const note   = document.getElementById("avatar-note");
+  const note = document.getElementById("avatar-note");
   if (!avatar || !window.gsap) return;
 
   const HAS_HOVER = window.matchMedia("(hover: hover)").matches;
 
   // How many pixels remain visible when "hidden"
-  const handlePx = () => (window.innerWidth <= 600 ? 14 : window.innerWidth <= 900 ? 16 : 20);
-
-  // Where to hide so a little handle still peeks
+  const handlePx = () => (window.innerWidth <= 600 ? 10 : window.innerWidth <= 900 ? 12 : 18);
   const hiddenLeft = () => {
-    const w = avatar.getBoundingClientRect().width || 120;
+    const w = document.getElementById("peeking-avatar").getBoundingClientRect().width || 120;
     return -(w - handlePx());
   };
+
 
   // Position the note just above the avatar's hand/balloon
   const placeNote = () => {
@@ -79,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const x = r.left + Math.min(r.width * 0.35, 140);   // adjust 0.35 if needed
     const y = r.bottom - Math.min(r.height * 0.45, 120);
     note.style.left = `${Math.max(8, x)}px`;
-    note.style.top  = `${Math.max(8, y)}px`;
+    note.style.top = `${Math.max(8, y)}px`;
   };
 
   // Initial state

@@ -1517,21 +1517,29 @@ body::before {
   transform: none;
 }
 
-/* Avatar: left-bottom, desktop & mobile sizes */
+/* === FINAL avatar sizing & placement (wins over everything) === */
 #peeking-avatar{
   position: fixed;
-  left: 0; /* JS animates this */
-  bottom: -8px;
-  z-index: 1000;
-  width: clamp(180px, 16vw, 260px); /* desktop */
+  left: 0;                 /* GSAP animates this only */
+  bottom: 16px;
+  z-index: 1100;
+  pointer-events: auto;
   height: auto;
+  width: clamp(280px, 20vw, 340px);        /* DESKTOP: bigger */
 }
 
+/* Tablet */
 @media (max-width: 900px){
-  #peeking-avatar{ width: clamp(150px, 24vw, 210px); }
+  #peeking-avatar{
+    width: clamp(180px, 22vw, 220px);
+  }
 }
+
+/* Phone */
 @media (max-width: 600px){
-  #peeking-avatar{ width: clamp(130px, 30vw, 180px); }
+  #peeking-avatar{
+    width: clamp(110px, 24vw, 150px);     /* PHONE: smaller */
+  }
 }
 
 /* Note: auto-positioned by JS right above the avatar’s hand */
