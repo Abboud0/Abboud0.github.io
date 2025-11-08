@@ -53,41 +53,79 @@ function toggleMenu() {
 })();
 
 
-// === Keep a visible handle when hidden ===
+// Peeking avatar that works on desktop (hover) and phone (tap), and
+// positions the note bubble right next to the avatar.
 document.addEventListener("DOMContentLoaded", () => {
-  const el = document.getElementById("peeking-avatar");
-  if (!el || !window.gsap) return;
+  const avatar = document.getElementById("peeking-avatar");
+  const note   = document.getElementById("avatar-note");
+  if (!avatar || !window.gsap) return;
 
-  // how many px remain visible when "hidden"
-  const handle = () => (
-    window.innerWidth <= 600 ? 10 :      // phones
-    window.innerWidth <= 900 ? 12 : 16   // tablets / desktop
-  );
+  const HAS_HOVER = window.matchMedia("(hover: hover)").matches;
 
-  // compute hidden left based on actual rendered width
+  // How many pixels remain visible when "hidden"
+  const handlePx = () => (window.innerWidth <= 600 ? 14 : window.innerWidth <= 900 ? 16 : 20);
+
+  // Where to hide so a little handle still peeks
   const hiddenLeft = () => {
-    const w = el.getBoundingClientRect().width || el.offsetWidth || 120;
-    return -(w - handle());              // negative so only 'handle()' peeks
+    const w = avatar.getBoundingClientRect().width || 120;
+    return -(w - handlePx());
   };
 
-  const show = () => gsap.to(el, { left: 0, duration: 0.3, ease: "power2.out" });
-  const hide = () => gsap.to(el, { left: hiddenLeft(), duration: 0.5, ease: "power2.out" });
+  // Position the note just above the avatar's hand/balloon
+  const placeNote = () => {
+    if (!note) return;
+    const r = avatar.getBoundingClientRect();
+    // put the note slightly above and right of the avatar bottom-left
+    const x = r.left + Math.min(r.width * 0.35, 140);   // adjust 0.35 if needed
+    const y = r.bottom - Math.min(r.height * 0.45, 120);
+    note.style.left = `${Math.max(8, x)}px`;
+    note.style.top  = `${Math.max(8, y)}px`;
+  };
 
-  // start hidden-but-peeking
-  gsap.set(el, { left: hiddenLeft() });
+  // Initial state
+  gsap.set(avatar, { left: hiddenLeft() });
 
-  // desktop hover
-  el.addEventListener("mouseenter", show);
-  el.addEventListener("mouseleave", hide);
+  if (HAS_HOVER) {
+    // Desktop: hover to show/hide
+    avatar.addEventListener("mouseenter", () => {
+      gsap.to(avatar, { left: 0, duration: 0.3, ease: "power2.out" });
+      if (note) { placeNote(); note.classList.add("is-visible"); }
+    });
+    avatar.addEventListener("mouseleave", () => {
+      gsap.to(avatar, { left: hiddenLeft(), duration: 0.5, ease: "power2.out" });
+      if (note) note.classList.remove("is-visible");
+    });
+  } else {
+    // Phone/tablet: start visible and allow tap to toggle
+    gsap.set(avatar, { left: 0 });
+    let shown = true;
+    avatar.addEventListener("click", () => {
+      shown = !shown;
+      gsap.to(avatar, {
+        left: shown ? 0 : hiddenLeft(),
+        duration: shown ? 0.3 : 0.5,
+        ease: "power2.out"
+      });
+    });
+  }
 
-  // recalc when the image size becomes known or viewport changes
-  if (!el.complete) el.addEventListener("load", () => gsap.set(el, { left: hiddenLeft() }));
-  window.addEventListener("resize", () => {
-    const cur = parseFloat(getComputedStyle(el).left) || 0;
-    if (cur < 0) gsap.set(el, { left: hiddenLeft() });
-  });
+  // Recalculate on resize/rotation (sizes change on mobile)
+  const recalc = () => {
+    const current = parseFloat(getComputedStyle(avatar).left) || 0;
+    const shouldHide = current < 0;
+    if (shouldHide) gsap.set(avatar, { left: hiddenLeft() });
+    placeNote();
+  };
+  window.addEventListener("resize", recalc);
+  if (!avatar.complete) avatar.addEventListener("load", recalc);
+
+  // Show the note briefly once on desktop
+  if (HAS_HOVER && note) {
+    placeNote();
+    note.classList.add("is-visible");
+    setTimeout(() => note.classList.remove("is-visible"), 3500);
+  }
 });
-
 
 function toggleMenu() { document.querySelector("nav ul").classList.toggle("active"); }
 
