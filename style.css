@@ -1517,40 +1517,28 @@ body::before {
   transform: none;
 }
 
-:root{
-  /* tweak these three numbers to taste */
-  --peek-desktop: clamp(750px, 15vw, 240px);
-  --peek-tablet:  clamp(130px, 14vw, 200px);
-  --peek-phone:   clamp(105px, 26vw, 150px);
-  --peek-offset:  -10px;
-}
-
-/* left–bottom placement (from your last change) */
-.peek{
+/* === Peeking avatar (left-bottom) === */
+#peeking-avatar{
   position: fixed;
-  left: max(0px, env(safe-area-inset-left));
-  bottom: var(--peek-offset);
-  z-index: 1000;
+  left: 0;                 /* JS animates this for peek-in/out */
+  bottom: -10px;
+  z-index: 1100;
   pointer-events: auto;
 }
 
-.peek img{ width: var(--peek-desktop); height: auto; }
-
-@media (max-width: 900px){
-  .peek img{ width: var(--peek-tablet); }
-}
-@media (max-width: 600px){
-  .peek img{ width: var(--peek-phone); }
-}
-
-/* left-bottom placement + size; JS controls "left" slide */
-#peeking-avatar{
-  position: fixed;
-  left: 0;                               /* JS animates this */
-  bottom: var(--peek-offset);
-  width: clamp(160px, 15vw, 240px);      /* adjust as you like */
+#peeking-avatar img{
+  display: block;
   height: auto;
-  z-index: 1000;
+  /* desktop size */
+  width: clamp(220px, 18vw, 320px);
 }
-@media (max-width: 900px){ #peeking-avatar{ width: clamp(130px, 14vw, 200px); } }
-@media (max-width: 600px){ #peeking-avatar{ width: clamp(105px, 26vw, 150px); } }
+
+/* tablet */
+@media (max-width: 900px){
+  #peeking-avatar img{ width: clamp(180px, 26vw, 240px); }
+}
+
+/* phone */
+@media (max-width: 600px){
+  #peeking-avatar img{ width: clamp(130px, 30vw, 180px); }
+}
