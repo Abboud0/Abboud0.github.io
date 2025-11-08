@@ -53,45 +53,38 @@ function toggleMenu() {
 })();
 
 
-// =====================
-// GSAP peeking avatar (adaptive)
-// =====================
+// === Keep a visible handle when hidden ===
 document.addEventListener("DOMContentLoaded", () => {
-  const avatar = document.getElementById("peeking-avatar");
-  if (!avatar || !window.gsap) return;
+  const el = document.getElementById("peeking-avatar");
+  if (!el || !window.gsap) return;
 
-  // how many pixels of the avatar should remain visible when hidden
-  const visibleHandle = () => {
-    const w = window.innerWidth;
-    if (w <= 600) return 12;   // phone
-    if (w <= 900) return 16;   // tablet
-    return 20;                 // desktop
-  };
+  // how many px remain visible when "hidden"
+  const handle = () => (
+    window.innerWidth <= 600 ? 10 :      // phones
+    window.innerWidth <= 900 ? 12 : 16   // tablets / desktop
+  );
 
+  // compute hidden left based on actual rendered width
   const hiddenLeft = () => {
-    const w = avatar.offsetWidth || 120;
-    return -(w - visibleHandle());  // negative so only the handle peeks
+    const w = el.getBoundingClientRect().width || el.offsetWidth || 120;
+    return -(w - handle());              // negative so only 'handle()' peeks
   };
+
+  const show = () => gsap.to(el, { left: 0, duration: 0.3, ease: "power2.out" });
+  const hide = () => gsap.to(el, { left: hiddenLeft(), duration: 0.5, ease: "power2.out" });
 
   // start hidden-but-peeking
-  gsap.set(avatar, { left: hiddenLeft() });
-
-  // intro: slide in then back
-  gsap.to(avatar, { left: 0, duration: 0.9, ease: "power2.out", delay: 0.25 });
-  setTimeout(() => gsap.to(avatar, { left: hiddenLeft(), duration: 0.7, ease: "power2.out" }), 3500);
+  gsap.set(el, { left: hiddenLeft() });
 
   // desktop hover
-  avatar.addEventListener("mouseenter", () =>
-    gsap.to(avatar, { left: 0, duration: 0.3, ease: "power2.out" })
-  );
-  avatar.addEventListener("mouseleave", () =>
-    gsap.to(avatar, { left: hiddenLeft(), duration: 0.55, ease: "power2.out" })
-  );
+  el.addEventListener("mouseenter", show);
+  el.addEventListener("mouseleave", hide);
 
-  // keep the peek size sensible when resized/rotated
+  // recalc when the image size becomes known or viewport changes
+  if (!el.complete) el.addEventListener("load", () => gsap.set(el, { left: hiddenLeft() }));
   window.addEventListener("resize", () => {
-    const current = parseFloat(getComputedStyle(avatar).left) || 0;
-    if (current < 0) gsap.set(avatar, { left: hiddenLeft() });
+    const cur = parseFloat(getComputedStyle(el).left) || 0;
+    if (cur < 0) gsap.set(el, { left: hiddenLeft() });
   });
 });
 
