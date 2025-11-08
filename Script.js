@@ -45,7 +45,7 @@ function toggleMenu() {
   }, 1000);
 })();
 
-(function ensureProjectsVisibleIfShortPage(){
+(function ensureProjectsVisibleIfShortPage() {
   const cards = document.querySelectorAll('.projects__grid .project');
   if (!cards.length) return;
   const short = (document.documentElement.scrollHeight - window.innerHeight) < 160;
@@ -54,17 +54,42 @@ function toggleMenu() {
 
 
 // =====================
-// GSAP peeking avatar + mobile menu
+// GSAP peeking avatar (adaptive width)
 // =====================
 document.addEventListener("DOMContentLoaded", () => {
   const avatar = document.getElementById("peeking-avatar");
-  if (avatar && window.gsap) {
-    gsap.fromTo(avatar, { left: "-150px" }, { left: "0px", duration: 3, ease: "power2.out" });
-    setTimeout(() => gsap.to(avatar, { left: "-150px", duration: 1, ease: "power2.out" }), 5000);
-    avatar.addEventListener("mouseenter", () => gsap.to(avatar, { left: "0px", duration: 0.5, ease: "power2.out" }));
-    avatar.addEventListener("mouseleave", () => gsap.to(avatar, { left: "-150px", duration: 1, ease: "power2.out" }));
-  }
+  if (!avatar || !window.gsap) return;
+
+  const HANDLE = -80; // pixels visible when hidden
+
+  const hiddenLeft = () => {
+    const w = avatar.offsetWidth || 120;   // fallback if not yet laid out
+    return -(w - HANDLE);                  // negative so only HANDLE peeks
+  };
+
+  // start hidden-but-peeking
+  gsap.set(avatar, { left: hiddenLeft() });
+
+  // intro: slide in, then back
+  gsap.to(avatar, { left: 0, duration: 1, ease: "power2.out", delay: 0.3 });
+  setTimeout(() => gsap.to(avatar, { left: hiddenLeft(), duration: 0.8, ease: "power2.out" }), 4000);
+
+  // desktop hover
+  avatar.addEventListener("mouseenter", () =>
+    gsap.to(avatar, { left: 0, duration: 0.35, ease: "power2.out" })
+  );
+  avatar.addEventListener("mouseleave", () =>
+    gsap.to(avatar, { left: hiddenLeft(), duration: 0.6, ease: "power2.out" })
+  );
+
+  // recompute when size changes (so phones/tablets keep a visible handle)
+  window.addEventListener("resize", () => {
+    const current = parseFloat(getComputedStyle(avatar).left);
+    if (current < 0) gsap.set(avatar, { left: hiddenLeft() });
+  });
 });
+
+
 function toggleMenu() { document.querySelector("nav ul").classList.toggle("active"); }
 
 // =====================
