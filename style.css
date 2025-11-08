@@ -46,7 +46,6 @@ header.hero,
 nav,
 section,
 footer,
-#peeking-avatar,
 .popup-overlay {
   position: relative;
 }
@@ -454,9 +453,11 @@ nav ul li {
 }
 
 /* -------- Education (single card) -------- */
-.edu { padding: 80px 20px; }
+.edu {
+  padding: 80px 20px;
+}
 
-.edu__card{
+.edu__card {
   max-width: 1100px;
   margin: 0 auto;
   padding: clamp(28px, 5vw, 40px);
@@ -464,11 +465,11 @@ nav ul li {
   background: var(--card);
   border: 1px solid var(--border);
   backdrop-filter: blur(10px);
-  box-shadow: 0 24px 60px rgba(0,0,0,.35);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .35);
 }
 
 /* Header row */
-.edu__header{
+.edu__header {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 20px;
@@ -477,45 +478,83 @@ nav ul li {
 }
 
 /* White-pill logo */
-.edu-logo{
-  background:#fff;
+.edu-logo {
+  background: #fff;
   padding: 10px 14px;
   border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.15);
-  display:inline-flex; align-items:center; justify-content:center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
-.edu-logo img{ width:72px; height:auto; display:block; }
+
+.edu-logo img {
+  width: 72px;
+  height: auto;
+  display: block;
+}
 
 /* Text */
-.edu__meta{ text-align:left; }
-.edu__years{ font-weight:800; color:#ffb000; margin-bottom:6px; }
-.edu__meta h2{ font-size:clamp(1.6rem,3.6vw,2.2rem); margin:0; }
-.edu__degree{ margin:4px 0 0; opacity:.9; }
+.edu__meta {
+  text-align: left;
+}
+
+.edu__years {
+  font-weight: 800;
+  color: #ffb000;
+  margin-bottom: 6px;
+}
+
+.edu__meta h2 {
+  font-size: clamp(1.6rem, 3.6vw, 2.2rem);
+  margin: 0;
+}
+
+.edu__degree {
+  margin: 4px 0 0;
+  opacity: .9;
+}
 
 /* Section title inside the card */
-.edu__sub{
-  text-align:center;
+.edu__sub {
+  text-align: center;
   margin: 18px 0 14px;
   font-size: clamp(1.1rem, 2.6vw, 1.3rem);
-  opacity:.95;
+  opacity: .95;
 }
 
 /* Courses grid INSIDE the card */
-.edu__courses{
-  display:grid;
+.edu__courses {
+  display: grid;
   grid-template-columns: repeat(4, minmax(200px, 1fr));
-  gap:18px;
+  gap: 18px;
 }
 
 /* Responsive */
-@media (max-width:900px){
-  .edu__header{ grid-template-columns:1fr; text-align:center; justify-items:center; }
-  .edu__meta{ text-align:center; }
-  .edu-logo img{ width:64px; }
-  .edu__courses{ grid-template-columns: repeat(2, minmax(200px, 1fr)); }
+@media (max-width:900px) {
+  .edu__header {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .edu__meta {
+    text-align: center;
+  }
+
+  .edu-logo img {
+    width: 64px;
+  }
+
+  .edu__courses {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+  }
 }
-@media (max-width:520px){
-  .edu__courses{ grid-template-columns: 1fr; }
+
+@media (max-width:520px) {
+  .edu__courses {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* flip cards */
@@ -1191,16 +1230,6 @@ nav ul li {
   }
 }
 
-/* -------- Popup -------- */
-#peeking-avatar {
-  position: fixed;
-  bottom: 0;
-  left: -150px;
-  width: 600px;
-  z-index: 1000;
-  cursor: pointer
-}
-
 .popup-overlay {
   position: fixed;
   inset: 0;
@@ -1486,4 +1515,37 @@ body::before {
   object-fit: cover;
   object-position: center 40%;
   transform: none;
+}
+
+/* Peeking avatar: left-middle, adaptive size */
+.peek {
+  position: fixed;
+  left: 35;
+  top: 50%;
+  transform: translateY(-3%);
+  width: clamp(78px, 9vw, 120px);   /* small on phones, modest on desktop */
+  height: auto;
+  z-index: 1000;
+  pointer-events: auto;    /* hover works on desktop */
+}
+
+.peek img {
+  display: block;
+  width: 800px;
+  /* desktop default */
+  height: auto;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .peek img {
+    width: 92px;
+  }
+}
+
+/* Phone */
+@media (max-width: 600px) {
+  .peek img {
+    width: 78px;
+  }
 }
